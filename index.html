@@ -292,6 +292,128 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/04/undefined-title/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero.Guo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rigid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/04/undefined-title/" itemprop="url">1094</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T20:41:28+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一道简单的字符串综合。<br><a href="http://newoj.acmclub.cn/contests/1218/problem/2" target="_blank" rel="external">传送门</a><br>对。是字符串。编程考虑的是如何更高效地解决问题。没必要拘泥于理解题意。//也有可能是我懒得多打几行代码<br>所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。<br>同样这道题可以使用stack。伪代码如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt;p;</div><div class="line"><span class="keyword">char</span> c;</div><div class="line"><span class="keyword">while</span>(c==getchar()!=<span class="string">'\0'</span>)    p.push(c);</div><div class="line"><span class="keyword">while</span>(p.top==<span class="string">'0'</span>)    p.pop;</div><div class="line"><span class="keyword">while</span>(!p.empty)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;p.top;    p.pop;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>就是这样。祝大家AC愉快。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/03/undefined-title/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -366,7 +488,7 @@
             <p>作者非常懒，因此懒得打题干，在此我默认大家已经理解了题意。<br><a href="http://newoj.acmclub.cn/contests/1218/problem/3" target="_blank" rel="external">传送门</a><br>输入是经典的多组输入方式，不再赘述。<br>字符数组长度在100以内，因此申请大小至少为105的字符数组(欲究其因可自行百度字符串缓冲区)或者string型变量(当然因为库函数的方便性还是推荐后者的)。<br>字符串对称的判断可以说不知道比回文数的判断高到哪去了。比如说我们可以：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//c++_style </span></div><div class="line"><span class="built_in">string</span> a;</div><div class="line">a[i]==a[a.length()-i<span class="number">-1</span>]</div><div class="line"><span class="comment">//c_style</span></div><div class="line"><span class="keyword">int</span> b=<span class="built_in">strlen</span>(a);</div><div class="line">a[i]==a[b-i<span class="number">-1</span>];</div></pre></td></tr></table></figure></p>
 <p>然后循环除以二直到非对称，输出此时字符串长度即可。<br>位运算可以让我们的代码跑得更快(zhuangbi)，比如：</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">b&amp;1==1</span>)&lt;=&gt;(<span class="name">b</span>%<span class="number">2</span>==1)    (<span class="name">b&gt;&gt;=1</span>)&lt;==&gt;(<span class="name">b/=2</span>)</div></pre></td></tr></table></figure>
-<p>值得一提的是有一种后进先出的数据结构叫stack。它在二分判断对称的时候似乎有妙用。大家有兴趣可以百度，我懒。<br>这道题应该没问题了。祝大家AC愉快。</p>
+<p>我们在计算机导论上学过一种叫stack的数据结构。它在二分判断对称的时候似乎有妙用。大家有兴趣可以百度，我懒。<br>这道题应该没问题了。祝大家AC愉快。</p>
 
           
         
@@ -700,7 +822,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
