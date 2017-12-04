@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="rigid">
 <meta property="og:description" content="作者非常懒，因此懒得打题干，在此我默认大家已经理解了题意。传送门输入是经典的多组输入方式，不再赘述。字符数组长度在100以内，因此申请大小至少为105的字符数组(欲究其因可自行百度字符串缓冲区)或者string型变量(当然因为库函数的方便性还是推荐后者的)。字符串对称的判断可以说不知道比回文数的判断高到哪去了。比如说我们可以：123456//c++_style string a;a[i]==a[a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-04T13:24:27.674Z">
+<meta property="og:updated_time" content="2017-12-04T13:53:31.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="neuq 1093">
 <meta name="twitter:description" content="作者非常懒，因此懒得打题干，在此我默认大家已经理解了题意。传送门输入是经典的多组输入方式，不再赘述。字符数组长度在100以内，因此申请大小至少为105的字符数组(欲究其因可自行百度字符串缓冲区)或者string型变量(当然因为库函数的方便性还是推荐后者的)。字符串对称的判断可以说不知道比回文数的判断高到哪去了。比如说我们可以：123456//c++_style string a;a[i]==a[a">
@@ -359,7 +359,7 @@
       
 
       
-        <p>作者非常懒，因此懒得打题干，在此我默认大家已经理解了题意。<br><a href="http://newoj.acmclub.cn/contests/1218/problem/3" target="_blank" rel="external">传送门</a><br>输入是经典的多组输入方式，不再赘述。<br>字符数组长度在100以内，因此申请大小至少为105的字符数组(欲究其因可自行百度字符串缓冲区)或者string型变量(当然因为库函数的方便性还是推荐后者的)。<br>字符串对称的判断可以说不知道比回文数的判断高到哪去了。比如说我们可以：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//c++_style </span></div><div class="line"><span class="built_in">string</span> a;</div><div class="line">a[i]==a[a.length()-i<span class="number">-1</span>]</div><div class="line"><span class="comment">//c_style</span></div><div class="line"><span class="keyword">int</span> b=<span class="built_in">strlen</span>(a);</div><div class="line">a[i]==a[b-i<span class="number">-1</span>];</div></pre></td></tr></table></figure></p>
+        <p>作者非常懒，因此懒得打题干，在此我默认大家已经理解了题意。<br><a href="http://newoj.acmclub.cn/problems/1093" target="_blank" rel="external">传送门</a><br>输入是经典的多组输入方式，不再赘述。<br>字符数组长度在100以内，因此申请大小至少为105的字符数组(欲究其因可自行百度字符串缓冲区)或者string型变量(当然因为库函数的方便性还是推荐后者的)。<br>字符串对称的判断可以说不知道比回文数的判断高到哪去了。比如说我们可以：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//c++_style </span></div><div class="line"><span class="built_in">string</span> a;</div><div class="line">a[i]==a[a.length()-i<span class="number">-1</span>]</div><div class="line"><span class="comment">//c_style</span></div><div class="line"><span class="keyword">int</span> b=<span class="built_in">strlen</span>(a);</div><div class="line">a[i]==a[b-i<span class="number">-1</span>];</div></pre></td></tr></table></figure></p>
 <p>然后循环除以二直到非对称，输出此时字符串长度即可。<br>位运算可以让我们的代码跑得更快(zhuangbi)，比如：</p>
 <figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(<span class="name">b&amp;1==1</span>)&lt;=&gt;(<span class="name">b</span>%<span class="number">2</span>==1)    (<span class="name">b&gt;&gt;=1</span>)&lt;==&gt;(<span class="name">b/=2</span>)</div></pre></td></tr></table></figure>
 <p>我们在计算机导论上学过一种叫stack的数据结构。不妨用此题试试水。<br><a href="http://www.cplusplus.com/reference/stack/stack/?kw=stack" target="_blank" rel="external">关于c++库函数中的stack容器</a><br>这道题应该没问题了。祝大家AC愉快。</p>
@@ -471,7 +471,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
