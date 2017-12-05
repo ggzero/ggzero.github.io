@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="一道简单的字符串综合。传送门对。是字符串。编程考虑的是如何更高效地解决问题。没必要拘泥于理解题意。//也有可能是我懒得多打几行代码所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。同样这道题可以使用stack。伪代码如下: 12345678stack&amp;lt;char&amp;gt;p;char c;while(c==getchar()!=&apos;\0&apos;)    p.push(">
+<meta name="description" content="一道简单的字符串应用题。传送门对。是字符串。我们考虑的是如何更高效地解决问题。没必要拘泥于“题意”。//也有可能是我懒得多打几行代码所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。同样这道题可以使用stack。伪代码如下: 12345678stack&amp;lt;char&amp;gt;p;char c;while(c==getchar()!=&apos;\0&apos;)    p.push">
 <meta property="og:type" content="article">
 <meta property="og:title" content="neuq 1094">
 <meta property="og:url" content="https://ggzero.github.io/2017/12/04/undefined-title/index.html">
 <meta property="og:site_name" content="rigid">
-<meta property="og:description" content="一道简单的字符串综合。传送门对。是字符串。编程考虑的是如何更高效地解决问题。没必要拘泥于理解题意。//也有可能是我懒得多打几行代码所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。同样这道题可以使用stack。伪代码如下: 12345678stack&amp;lt;char&amp;gt;p;char c;while(c==getchar()!=&apos;\0&apos;)    p.push(">
+<meta property="og:description" content="一道简单的字符串应用题。传送门对。是字符串。我们考虑的是如何更高效地解决问题。没必要拘泥于“题意”。//也有可能是我懒得多打几行代码所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。同样这道题可以使用stack。伪代码如下: 12345678stack&amp;lt;char&amp;gt;p;char c;while(c==getchar()!=&apos;\0&apos;)    p.push">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-04T13:54:36.408Z">
+<meta property="og:updated_time" content="2017-12-05T02:23:45.591Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="neuq 1094">
-<meta name="twitter:description" content="一道简单的字符串综合。传送门对。是字符串。编程考虑的是如何更高效地解决问题。没必要拘泥于理解题意。//也有可能是我懒得多打几行代码所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。同样这道题可以使用stack。伪代码如下: 12345678stack&amp;lt;char&amp;gt;p;char c;while(c==getchar()!=&apos;\0&apos;)    p.push(">
+<meta name="twitter:description" content="一道简单的字符串应用题。传送门对。是字符串。我们考虑的是如何更高效地解决问题。没必要拘泥于“题意”。//也有可能是我懒得多打几行代码所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。同样这道题可以使用stack。伪代码如下: 12345678stack&amp;lt;char&amp;gt;p;char c;while(c==getchar()!=&apos;\0&apos;)    p.push">
 
 
 
@@ -295,7 +295,7 @@
     <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/04/undefined-title/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zero.Guo">
+      <meta itemprop="name" content="zero.G">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.jpg">
     </span>
@@ -359,7 +359,7 @@
       
 
       
-        <p>一道简单的字符串综合。<br><a href="http://newoj.acmclub.cn/problems/1094" target="_blank" rel="external">传送门</a><br>对。是字符串。编程考虑的是如何更高效地解决问题。没必要拘泥于理解题意。//也有可能是我懒得多打几行代码<br>所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。<br>同样这道题可以使用stack。伪代码如下:</p>
+        <p>一道简单的字符串应用题。<br><a href="http://newoj.acmclub.cn/problems/1094" target="_blank" rel="external">传送门</a><br>对。是字符串。我们考虑的是如何更高效地解决问题。没必要拘泥于“题意”。//也有可能是我懒得多打几行代码<br>所以我们只要把输入的数字看作字符串就可以很简单地AC了。注意反转后前导0需要跳过即可。<br>同样这道题可以使用stack。伪代码如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">stack</span>&lt;<span class="keyword">char</span>&gt;p;</div><div class="line"><span class="keyword">char</span> c;</div><div class="line"><span class="keyword">while</span>(c==getchar()!=<span class="string">'\0'</span>)    p.push(c);</div><div class="line"><span class="keyword">while</span>(p.top==<span class="string">'0'</span>)    p.pop;</div><div class="line"><span class="keyword">while</span>(!p.empty)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;p.top;    p.pop;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>就是这样。祝大家AC愉快。</p>
 
@@ -457,10 +457,10 @@
             
               <img class="site-author-image" itemprop="image"
                 src="/images/avatar.jpg"
-                alt="zero.Guo" />
+                alt="zero.G" />
             
-              <p class="site-author-name" itemprop="name">zero.Guo</p>
-              <p class="site-description motion-element" itemprop="description">lazyyyyyyyy</p>
+              <p class="site-author-name" itemprop="name">zero.G</p>
+              <p class="site-description motion-element" itemprop="description">败者无荣耀</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -525,7 +525,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">zero.Guo</span>
+  <span class="author" itemprop="copyrightHolder">zero.G</span>
 
   
 </div>
