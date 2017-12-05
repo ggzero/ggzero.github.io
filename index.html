@@ -415,9 +415,25 @@ int fgetc(FILE *steam);</code></p>
 <li>sscanf()函数<br>sscanf函数原型为<code>int sscanf(const char *str, const char *format, ...)。</code><br>将参数str的字符串根据参数format字符串来转换并格式化数据，转换后的结果存于对应的参数内。<br>具体功能如下：<br>(1)根据格式从字符串中提取数据。如从字符串中取出整数、浮点数和字符串等。<br>(2)取指定长度的字符串<br>(3)取到指定字符为止的字符串<br>(4)取仅包含指定字符集的字符串<br>(5)取到指定字符集为止的字符串<br>sscanf可以支持格式字符%[]：<br>(1)-: 表示范围，如：%[1-9]表示只读取1-9这几个数字 %[a-z]表示只读取a-z小写字母，类似地 %[A-Z]只读取大写字母<br>(2)^: 表示不取，如：%[^1]表示读取除’1’以外的所有字符 %[^/]表示除/以外的所有字符<br>(3),: 范围可以用”,”相连接 如%[1-9,a-z]表示同时取1-9数字和a-z小写字母<br>(4)原则：从第一个在指定范围内的数字开始读取，到第一个不在范围内的数字结束%s 可以看成%[] 的一个特例 %<a href="注意^后面有一个空格！">^ </a></li>
 <li>snprintf()函数<br><code>int snprintf(char *restrict buf, size_t n, const char * restrict  format, ...);。</code>最多从源串中拷贝n－1个字符到目标串中，然后再在后面加一个0。所以如果目标串的大小为n 的话，将不会溢出。</li>
 </ol>
+<h2 id="番外：c-style的函数"><a href="#番外：c-style的函数" class="headerlink" title="番外：c++style的函数"></a>番外：c++style的函数</h2><ol>
+<li><p>cin,cout函数<br>最精简的输入输出方式，傻瓜式操作。同样精简带来的就是不便。。在需要用到各种格式化输出时就要用iomanip头文件中声明的函数来操作。比如setw()函数设置场宽，setprecision()函数设置保留有效数字，setbase()函数以()进制输出。<br>同时效率十分之低。需要用<code>std::ios::sync_with_stdio(false)</code> 及<code>cin.tie(0)</code>两个函数关闭和stdin/out的同步来加速。</p>
+</li>
+<li><p>cin.ignore()函数<br>cin.ignore(a,ch)方法是从输入流（cin）中提取字符，提取的字符被忽略（ignore），不被使用。每抛弃一个字符，它都要计数和比较字符：如果计数值达到a或者被抛弃的字符是ch，则cin.ignore()函数执行终止。<br>如果cin.ignore()不给参数，则默认参数为cin.ignore(1,EOF)，即把EOF前的1个字符清掉，没有遇到EOF就清掉一个字符然后结束。</p>
+</li>
+<li><p>cin.get()函数</p>
+</li>
+</ol>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">ch</span>=cin.get();        或者   cin.<span class="builtin-name">get</span>(ch);</div></pre></td></tr></table></figure>
+<p>接收一个字符。<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cin.<span class="builtin-name">get</span>(a,20);</div></pre></td></tr></table></figure></p>
+<p>接收一个字符串。<br>无参数的cin.get()等同于cin.ignore();</p>
+<p><strong>重点来了！！cin.getline()和getline()函数</strong><br>（1）getline()函数 原型为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">( istream&amp; is, <span class="built_in">string</span>&amp; str, <span class="keyword">char</span> delim )</span></span>;</div><div class="line"><span class="function">istream&amp; <span class="title">getline</span> <span class="params">( istream&amp; is, <span class="built_in">string</span>&amp; str )</span></span>;</div></pre></td></tr></table></figure>
+<p>读入一行字符。不读入换行符。因为用到了string变量在string头文件中声明。<br>（2）cin.getline()函数 原型为</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssize_t getline(<span class="name">char</span> **lineptr, size_t *n, FILE *stream)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p> cin.getline()实际上有三个参数，cin.getline(接受字符串的变量,接受个数,结束字符)<br>当第三个参数省略时，系统默认为’\0’。不读入换行符。<br>//读空格不读换行符还是挺方便的</p>
 <p>参考来源：</p>
 <blockquote>
-<p><a href="http://blog.csdn.net/wangyin159/article/details/47066247" target="_blank" rel="external">http://blog.csdn.net/wangyin159/article/details/47066247</a><br><a href="http://blog.csdn.net/dingding3w/article/details/46624643" target="_blank" rel="external">http://blog.csdn.net/dingding3w/article/details/46624643</a><br><a href="http://blog.csdn.net/imxiangzi/article/details/45916875" target="_blank" rel="external">http://blog.csdn.net/imxiangzi/article/details/45916875</a><br>《算法竞赛入门经典》by刘汝佳</p>
+<p><a href="http://blog.csdn.net/wangyin159/article/details/47066247" target="_blank" rel="external">http://blog.csdn.net/wangyin159/article/details/47066247</a><br><a href="http://blog.csdn.net/dingding3w/article/details/46624643" target="_blank" rel="external">http://blog.csdn.net/dingding3w/article/details/46624643</a><br><a href="http://blog.csdn.net/imxiangzi/article/details/45916875" target="_blank" rel="external">http://blog.csdn.net/imxiangzi/article/details/45916875</a><br><a href="http://blog.csdn.net/fenxinzi557/article/details/52222290" target="_blank" rel="external">http://blog.csdn.net/fenxinzi557/article/details/52222290</a><br><a href="http://blog.csdn.net/wxbmelisky/article/details/48596881" target="_blank" rel="external">http://blog.csdn.net/wxbmelisky/article/details/48596881</a><br>《算法竞赛入门经典》by刘汝佳</p>
 </blockquote>
 
           
