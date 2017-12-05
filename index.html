@@ -374,7 +374,7 @@
 <h2 id="二，puts-和gets-函数"><a href="#二，puts-和gets-函数" class="headerlink" title="二，puts()和gets()函数"></a>二，puts()和gets()函数</h2><ol>
 <li>puts()函数puts()函数用来向标准输出设备(屏幕)写字符串并换行, 其调用格式为:puts(s);其中s为字符串变量(字符串数组名或字符串指针)。puts()函数的作用与语printf(”%s\n”, s)相同。</li>
 <li>puts()函数只能输出字符串, 不能输出数值或进行格式变换。可以将字符串直接写入puts()函数中。</li>
-<li>gets()函数用来从标准输入设备(键盘)读取字符串直到回车结束, 但回车符不属于这个字符串。其调用格式为:gets(s);其中s为字符串变量(字符串数组名或字符串指针)。gets(s)函数与scanf(“%s”, &amp;s)相似, 但不完全相同, 使用scanf(“%s”,&amp;s)函数输入字符串时存在一个问题, 就是如果输入了空格会认为输入字符串结束,空格后的字符将作为下一个输入项处理, 但gets() 函数将接收输入的整个字符串直到回车为止。</li>
+<li>gets()函数用来从标准输入设备(键盘)读取字符串直到回车结束, 但回车符不属于这个字符串。其调用格式为:gets(s);其中s为字符串变量(字符串数组名或字符串指针)。gets(s)函数与scanf(“%s”, s)相似, 但不完全相同, 使用scanf(“%s”,s)函数输入字符串时存在一个问题, 就是如果输入了空格会认为输入字符串结束,空格后的字符将作为下一个输入项处理, 但gets() 函数将接收输入的整个字符串直到回车为止。</li>
 <li>gets(s)函数中的变量s为一字符串。如果为单个字符, 编译不会有错误, 但运行后会出现”Null pointer asignmemt”的错误。而且，gets()函数在读取时不会指明读取的最大字符数，会导致非法内存的出现。因此在c11标准中gets()已被删除。</li>
 </ol>
 <h2 id="三，putchar-、getch-、getche-和getchar-函数"><a href="#三，putchar-、getch-、getche-和getchar-函数" class="headerlink" title="三，putchar()、getch()、getche()和getchar()函数"></a>三，putchar()、getch()、getche()和getchar()函数</h2><ol>
@@ -382,41 +382,48 @@
 <li>getch()和getche()函数  这两个函数都是从键盘上读入一个字符。其调用格式为:getch(); getche();两者的区别是:getch()函数不将读入的字符回显在显示屏幕上, 而getche()函数却将读入的字符回显到显示屏幕上。利用回显和不回显的特点, 这两个函数经常用于交互输入的过程中完成暂停等功能。</li>
 <li>getchar()函数也是从键盘上读入一个字符, 并带回显。它与前面两个函数的区别在于: getchar()函数等待输入直到按回车才结束, 回车前的所有输入字符都会逐个显示在屏幕上。但只有第一个字符作为函数的返回值。</li>
 </ol>
-<h2 id="四，文件的顺序写函数"><a href="#四，文件的顺序写函数" class="headerlink" title="四，文件的顺序写函数"></a>四，文件的顺序写函数</h2><p>fprintf()、fputs()和fputc()函数函数fprintf()、fputs()和fputc()均为文件的顺序写操作函数,其调用格式如下:<br><code>int fprintf(FILE *stream, char *format, &lt;variable-list&gt;);
-int fputs(char *string, FILE *steam);
-int fputc(int ch, FILE *steam);</code><br>上述三个函数的返回值均为整型量。</p>
+<h2 id="四，文件的顺序写函数"><a href="#四，文件的顺序写函数" class="headerlink" title="四，文件的顺序写函数"></a>四，文件的顺序写函数</h2><p>fprintf()、fputs()和fputc()函数函数fprintf()、fputs()和fputc()均为文件的顺序写操作函数,其调用格式如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fprintf</span><span class="params">(FILE *stream, <span class="keyword">char</span> *format, &lt;variable-<span class="built_in">list</span>&gt;)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fputs</span><span class="params">(<span class="keyword">char</span> *<span class="built_in">string</span>, FILE *steam)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fputc</span><span class="params">(<span class="keyword">int</span> ch, FILE *steam)</span></span>;</div></pre></td></tr></table></figure>
+<p>上述三个函数的返回值均为整型量。</p>
 <ol>
 <li>fprintf() 函数的返回值为实际写入文件中的字罕个数(字节数)。如果写错误, 则返回一个负数。</li>
 <li>fputs()函数返回0时表明将string指针所指的字符串写入文件中的操作成功, 返回非0时, 表明写操作失败。</li>
 <li>fputc()函数返回一个向文件所写字符的值, 此时写操作成功, 否则返回EOF(文件结束结束其值为-1, 在stdio.h中定义)表示写操作错误。</li>
 <li>fprintf( ) 函数中格式化的规定与printf( ) 函数相同,   所不同的只是fprintf()函数是向文件中写入。而printf()是向屏幕输出。</li>
 </ol>
-<h2 id="五，文件的顺序读操作函数"><a href="#五，文件的顺序读操作函数" class="headerlink" title="五，文件的顺序读操作函数"></a>五，文件的顺序读操作函数</h2><p>fscanf()、fgets()和fgetc()函数函数fscanf()、fgets()和fgetc()均为文件的顺序读操作函数,其调用格式如下:<br><code>int fscanf(FILE *stream, char *format, &lt;address-list&gt;);
-char fgets(char *string, int n, FILE *steam);
-int fgetc(FILE *steam);</code></p>
+<h2 id="五，文件的顺序读操作函数"><a href="#五，文件的顺序读操作函数" class="headerlink" title="五，文件的顺序读操作函数"></a>五，文件的顺序读操作函数</h2><p>fscanf()、fgets()和fgetc()函数函数fscanf()、fgets()和fgetc()均为文件的顺序读操作函数,其调用格式如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fscanf</span><span class="params">(FILE *stream, <span class="keyword">char</span> *format, &lt;address-<span class="built_in">list</span>&gt;)</span></span>;</div><div class="line"><span class="function"><span class="keyword">char</span> <span class="title">fgets</span><span class="params">(<span class="keyword">char</span> *<span class="built_in">string</span>, <span class="keyword">int</span> n, FILE *steam)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fgetc</span><span class="params">(FILE *steam)</span></span>;</div></pre></td></tr></table></figure>
 <ol>
 <li>fscanf()函数的用法与scanf()函数相似,   只是它是从文件中读到信息。fscanf()函数的返回值为EOF(即-1), 表明读错误, 否则读数据成功。</li>
 <li>fgets()函数从文件中读取至多n-1个字符(n用来指定字符数), 并把它们放入string指向的字符串中, 在读入之后自动向字符串未尾加一个空字符, 读成功返回string指针,失败返回一个空指针。</li>
 <li>fgetc()函数读取一个打开的文件中的一个字符,返回一个int值, 读错误时返回EOF。</li>
 </ol>
 <h2 id="六，freopen-函数"><a href="#六，freopen-函数" class="headerlink" title="六，freopen ()函数"></a>六，freopen ()函数</h2><ol>
-<li>函数名：freopen </li>
-<li>声明：<code>FILE *freopen( const char *path, const char *mode, FILE *stream );</code> </li>
-<li>所在文件： stdio.h</li>
+<li><p>函数名：freopen </p>
+</li>
+<li><p>声明：</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FILE</span> *freopen( <span class="keyword">const</span> <span class="keyword">char</span> *path, <span class="keyword">const</span> <span class="keyword">char</span> *mode, <span class="keyword">FILE</span> *stream );</div></pre></td></tr></table></figure>
+</li>
+<li><p>所在文件： stdio.h</p>
+</li>
 <li>参数说明：<br>path: 文件名，用于存储输入输出的自定义文件名。<br>mode: 文件打开的模式。和fopen中的模式（如r-只读, w-写）相同。<br>stream: 一个文件，通常使用标准流文件。 </li>
 <li>返回值：成功，则返回一个path所指定文件的指针；失败，返回NULL。（一般可以不使用它的返回值） </li>
 <li>功能：实现重定向，把预定义的标准流文件定向到由path指定的文件中。标准流文件具体是指stdin、stdout和stderr。其中stdin是标准输入流，默认为键盘；stdout是标准输出流，默认为屏幕；stderr是标准错误流，一般把屏幕设为默认。 </li>
 <li>使用fclose()函数关闭文件。</li>
 </ol>
-<h2 id="七，sprintf-与sscanf-函数"><a href="#七，sprintf-与sscanf-函数" class="headerlink" title="七，sprintf()与sscanf()函数"></a>七，sprintf()与sscanf()函数</h2><ol>
-<li>sprintf()函数<br>函数原型为<code>int sprintf( char *buffer, const char *format, [ argument] … );</code><br>返回写入buffer 的字符数，出错则返回-1. 如果 buffer 或 format 是空指针，且不出错而继续，函数将返回-1，并且 errno 会被设置为 EINVAL。sprintf 返回被写入buffer 的字节数，结束字符‘\0’不计入内。即，如果“Hello”被写入空间足够大的buffer后，函数sprintf 返回5。<br>具体功能：<br>（1）将数字变量转换为字符串。<br>（2）得到整型变量的16进制和8进制字符串。<br>（3）连接多个字符串。</li>
-</ol>
-<ol>
-<li>sscanf()函数<br>sscanf函数原型为<code>int sscanf(const char *str, const char *format, ...)。</code><br>将参数str的字符串根据参数format字符串来转换并格式化数据，转换后的结果存于对应的参数内。<br>具体功能如下：<br>(1)根据格式从字符串中提取数据。如从字符串中取出整数、浮点数和字符串等。<br>(2)取指定长度的字符串<br>(3)取到指定字符为止的字符串<br>(4)取仅包含指定字符集的字符串<br>(5)取到指定字符集为止的字符串<br>sscanf可以支持格式字符%[]：<br>(1)-: 表示范围，如：%[1-9]表示只读取1-9这几个数字 %[a-z]表示只读取a-z小写字母，类似地 %[A-Z]只读取大写字母<br>(2)^: 表示不取，如：%[^1]表示读取除’1’以外的所有字符 %[^/]表示除/以外的所有字符<br>(3),: 范围可以用”,”相连接 如%[1-9,a-z]表示同时取1-9数字和a-z小写字母<br>(4)原则：从第一个在指定范围内的数字开始读取，到第一个不在范围内的数字结束%s 可以看成%[] 的一个特例 %<a href="注意^后面有一个空格！">^ </a></li>
-<li>snprintf()函数<br><code>int snprintf(char *restrict buf, size_t n, const char * restrict  format, ...);。</code>最多从源串中拷贝n－1个字符到目标串中，然后再在后面加一个0。所以如果目标串的大小为n 的话，将不会溢出。</li>
-</ol>
+<h2 id="七，sprintf-与sscanf-函数"><a href="#七，sprintf-与sscanf-函数" class="headerlink" title="七，sprintf()与sscanf()函数"></a>七，sprintf()与sscanf()函数</h2><p>1.sprintf()函数    </p>
+<p>函数原型为<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sprintf</span><span class="params">( <span class="keyword">char</span> *buffer, <span class="keyword">const</span> <span class="keyword">char</span> *format, [ argument] … )</span></span>;</div></pre></td></tr></table></figure></p>
+<p> 返回写入buffer 的字符数，出错则返回-1. 如果 buffer 或 format 是空指针，且不出错而继续，函数将返回-1，并且 errno 会被设置为 EINVAL。sprintf 返回被写入buffer 的字节数，结束字符‘\0’不计入内。即，如果“Hello”被写入空间足够大的buffer后，函数sprintf 返回5。<br> 具体功能：<br> （1）将数字变量转换为字符串。<br> （2）得到整型变量的16进制和8进制字符串。<br> （3）连接多个字符串。</p>
+<p>2.sscanf()函数 </p>
+<p> sscanf函数原型为<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">sscanf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *str, <span class="keyword">const</span> <span class="keyword">char</span> *format, ...)</span></span>;</div></pre></td></tr></table></figure></p>
+<p> 将参数str的字符串根据参数format字符串来转换并格式化数据，转换后的结果存于对应的参数内。<br> 具体功能如下：<br> (1)根据格式从字符串中提取数据。如从字符串中取出整数、浮点数和字符串等。<br> (2)取指定长度的字符串<br> (3)取到指定字符为止的字符串<br> (4)取仅包含指定字符集的字符串<br> (5)取到指定字符集为止的字符串<br> sscanf可以支持格式字符%[]：<br>(1)-: 表示范围，如：%[1-9]表示只读取1-9这几个数字 %[a-z]表示只读取a-z小写字母，类似地 %[A-Z]只读取大写字母<br>(2)^: 表示不取，如：%[^1]表示读取除’1’以外的所有字符 %[^/]表示除/以外的所有字符<br>(3),: 范围可以用”,”相连接 如%[1-9,a-z]表示同时取1-9数字和a-z小写字母<br>(4)原则：从第一个在指定范围内的数字开始读取，到第一个不在范围内的数字结束%s 可以看成%[] 的一个特例 %<a href="注意^后面有一个空格！">^ </a></p>
+<p>3.snprintf()函数</p>
+<p> 声明为：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">snprintf</span><span class="params">(<span class="keyword">char</span> *<span class="keyword">restrict</span> buf, <span class="keyword">size_t</span> n, <span class="keyword">const</span> <span class="keyword">char</span> * <span class="keyword">restrict</span>  format, ...)</span></span>;</div></pre></td></tr></table></figure></p>
+<p>最多从源串中拷贝n－1个字符到目标串中，然后再在后面加一个0。所以如果目标串的大小为n 的话，将不会溢出。</p>
 <h2 id="番外：c-style的函数"><a href="#番外：c-style的函数" class="headerlink" title="番外：c++style的函数"></a>番外：c++style的函数</h2><ol>
-<li><p>cin,cout函数<br>最精简的输入输出方式，傻瓜式操作。同样精简带来的就是不便。。在需要用到各种格式化输出时就要用iomanip头文件中声明的函数来操作。比如setw()函数设置场宽，setprecision()函数设置保留有效数字，setbase()函数以()进制输出。<br>同时效率十分之低。需要用<code>std::ios::sync_with_stdio(false)</code> 及<code>cin.tie(0)</code>两个函数关闭和stdin/out的同步来加速。</p>
+<li><p>cin,cout函数<br>最精简的输入输出方式，傻瓜式操作。同样精简带来的就是不便。。在需要用到各种格式化输出时就要用iomanip头文件中声明的函数来操作。比如setw()函数设置场宽，setprecision()函数设置保留有效数字，setbase()函数以()进制输出。<br>同时效率十分之低。需要用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">std</span>::ios::sync_with_stdio(<span class="literal">false</span>); 及 <span class="built_in">cin</span>.tie(<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<p>两个函数关闭和stdin/out的同步来加速。</p>
 </li>
 <li><p>cin.ignore()函数<br>cin.ignore(a,ch)方法是从输入流（cin）中提取字符，提取的字符被忽略（ignore），不被使用。每抛弃一个字符，它都要计数和比较字符：如果计数值达到a或者被抛弃的字符是ch，则cin.ignore()函数执行终止。<br>如果cin.ignore()不给参数，则默认参数为cin.ignore(1,EOF)，即把EOF前的1个字符清掉，没有遇到EOF就清掉一个字符然后结束。</p>
 </li>
