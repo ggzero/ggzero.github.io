@@ -292,6 +292,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/06/undefined-title/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero.G">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rigid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/06/undefined-title/" itemprop="url">快速幂</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T21:49:59+08:00">
+                2017-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="摸一发快速幂"><a href="#摸一发快速幂" class="headerlink" title="摸一发快速幂"></a>摸一发快速幂</h2><p>标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(b)&#123;</div><div class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</div><div class="line">        　　ans*=a;</div><div class="line">        a*=a;</div><div class="line">        b&gt;&gt;=<span class="number">1</span>;</div><div class="line">　 &#125;</div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显然运算量减少了许多。在大指数幂的时候尤为突出。//其实这样能不能做一个推广？在大指数幂的时候用十进制来乘呢？算术运算次数小应该能弥补逻辑运算量太大的不足？</p>
+<p>当然在实操中还会用到<strong>取模</strong>这个操作。我们可以根本不去考虑乘方运算取模法则：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">int</span> mi(<span class="built_in">int</span> a,<span class="built_in">int</span> b)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">int</span> ans=<span class="number">1</span><span class="comment">;</span></div><div class="line">    a%=<span class="built_in">mod</span><span class="comment">;</span></div><div class="line">    <span class="keyword">while</span> (b)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (b&amp;<span class="number">1</span>) ans=ans*a%<span class="built_in">mod</span><span class="comment">;</span></div><div class="line">        b&gt;&gt;=<span class="number">1</span><span class="comment">;</span></div><div class="line">        a=a*a%<span class="built_in">mod</span><span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ans<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这算是简单的快速幂变形了。然鹅还有一个大boss：</p>
+<h2 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h2><p>矩阵运算的朴素算法如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const int N=100;</div><div class="line">int c[<span class="string">N</span>][<span class="symbol">N</span>];</div><div class="line">void multi(int a[<span class="string"></span>][<span class="symbol">N</span>],int b[][N],int n)</div><div class="line">&#123;</div><div class="line"><span class="code">    memset(c,0,sizeof c);</span></div><div class="line"><span class="code">    for(int i=1;i&lt;=n;i++)</span></div><div class="line"><span class="code">        for(int j=1;j&lt;=n;j++)</span></div><div class="line"><span class="code">        for(int k=1;k&lt;=n;k++)</span></div><div class="line"><span class="code">        c[i][j]+=a[i][k]*b[k][j];</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显然矩阵乘法的复杂度是O(n^3)。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> tmp[N][N];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">multi</span><span class="params">(<span class="keyword">int</span> a[][N],<span class="keyword">int</span> b[][N],<span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(tmp,<span class="number">0</span>,<span class="keyword">sizeof</span> tmp);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</div><div class="line">        tmp[i][j]+=a[i][k]*b[k][j];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">        a[i][j]=tmp[i][j];</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> res[N][N];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pow</span><span class="params">(<span class="keyword">int</span> a[][N],<span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(res,<span class="number">0</span>,<span class="keyword">sizeof</span> res);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) res[i][i]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)</div><div class="line">            multi(res,a,n);<span class="comment">//res=res*a;复制直接在multi里面实现了；</span></div><div class="line">        multi(a,a,n);<span class="comment">//a=a*a</span></div><div class="line">        n&gt;&gt;=<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>res数组初始化就等同于单位矩阵E,最终算出的结果是一个res矩阵。<br>至于应用。。今天就摸了。。改天补</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/05/undefined-title/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1020,7 +1150,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

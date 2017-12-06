@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="emmm经过这样那样的折磨总算是搭好了一个博客在这里鸣谢搭建过程中两位手把手教学以及debug的朋友@吴东@王鹏他们的教程已经很详细了我就说一下容易错的地方吧首先是使用Git操作到生成SSH之后就可以换cmd或者PowerShell了这里一定要注意SSH以前的操作都是全局而之后必须在blog目录里然后就是站点配置文件里面需要在deploy下最后另加一句branch:master最后 这些操作貌似都">
+<meta name="description" content="摸一发快速幂标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了： 12345678910int qpow(int a,int b)&amp;#123;    int ans=1;        while(b)&amp;#123;        if(b&amp;amp;1)        　　ans*=a;        a*=a;        b&amp;gt;&amp;gt;=1;　 &amp;#125;    retu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一点微小的经验分享给大家">
-<meta property="og:url" content="https://ggzero.github.io/2017/10/20/undefined-title/index.html">
+<meta property="og:title" content="快速幂">
+<meta property="og:url" content="https://ggzero.github.io/2017/12/06/undefined-title/index.html">
 <meta property="og:site_name" content="rigid">
-<meta property="og:description" content="emmm经过这样那样的折磨总算是搭好了一个博客在这里鸣谢搭建过程中两位手把手教学以及debug的朋友@吴东@王鹏他们的教程已经很详细了我就说一下容易错的地方吧首先是使用Git操作到生成SSH之后就可以换cmd或者PowerShell了这里一定要注意SSH以前的操作都是全局而之后必须在blog目录里然后就是站点配置文件里面需要在deploy下最后另加一句branch:master最后 这些操作貌似都">
+<meta property="og:description" content="摸一发快速幂标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了： 12345678910int qpow(int a,int b)&amp;#123;    int ans=1;        while(b)&amp;#123;        if(b&amp;amp;1)        　　ans*=a;        a*=a;        b&amp;gt;&amp;gt;=1;　 &amp;#125;    retu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-05T02:31:03.681Z">
+<meta property="og:updated_time" content="2017-12-06T14:13:51.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一点微小的经验分享给大家">
-<meta name="twitter:description" content="emmm经过这样那样的折磨总算是搭好了一个博客在这里鸣谢搭建过程中两位手把手教学以及debug的朋友@吴东@王鹏他们的教程已经很详细了我就说一下容易错的地方吧首先是使用Git操作到生成SSH之后就可以换cmd或者PowerShell了这里一定要注意SSH以前的操作都是全局而之后必须在blog目录里然后就是站点配置文件里面需要在deploy下最后另加一句branch:master最后 这些操作貌似都">
+<meta name="twitter:title" content="快速幂">
+<meta name="twitter:description" content="摸一发快速幂标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了： 12345678910int qpow(int a,int b)&amp;#123;    int ans=1;        while(b)&amp;#123;        if(b&amp;amp;1)        　　ans*=a;        a*=a;        b&amp;gt;&amp;gt;=1;　 &amp;#125;    retu">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://ggzero.github.io/2017/10/20/undefined-title/"/>
+  <link rel="canonical" href="https://ggzero.github.io/2017/12/06/undefined-title/"/>
 
 
 
 
 
-  <title>一点微小的经验分享给大家 | rigid</title>
+  <title>快速幂 | rigid</title>
   
 
 
@@ -292,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/10/20/undefined-title/">
+    <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/06/undefined-title/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zero.G">
@@ -309,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">一点微小的经验分享给大家</h1>
+          <h1 class="post-title" itemprop="name headline">快速幂</h1>
         
 
         <div class="post-meta">
@@ -321,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-20T20:16:05+08:00">
-                2017-10-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T21:49:59+08:00">
+                2017-12-06
               </time>
             
 
@@ -359,8 +359,18 @@
       
 
       
-        <p>emmm经过这样那样的折磨总算是搭好了一个博客<br>在这里鸣谢搭建过程中两位手把手教学以及debug的朋友<a href="http://zoomdong.site/" target="_blank" rel="external">@吴东</a><a href="https://rivercome.github.io/" target="_blank" rel="external">@王鹏</a><br>他们的教程已经很详细了我就说一下容易错的地方吧<br>首先是使用Git操作到生成SSH之后就可以换cmd或者PowerShell了<br>这里一定要注意SSH以前的操作都是全局而之后必须在blog目录里<br>然后就是站点配置文件里面需要在deploy下最后另加一句branch:master<br>最后 这些操作貌似都是linux语法 所以别忘了空格 必要时候百度会帮大忙的</p>
-<h2 id="emmm没了-markdown语法再见"><a href="#emmm没了-markdown语法再见" class="headerlink" title="emmm没了 markdown语法再见"></a>emmm没了 markdown语法再见</h2>
+        <h2 id="摸一发快速幂"><a href="#摸一发快速幂" class="headerlink" title="摸一发快速幂"></a>摸一发快速幂</h2><p>标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(b)&#123;</div><div class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</div><div class="line">        　　ans*=a;</div><div class="line">        a*=a;</div><div class="line">        b&gt;&gt;=<span class="number">1</span>;</div><div class="line">　 &#125;</div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显然运算量减少了许多。在大指数幂的时候尤为突出。//其实这样能不能做一个推广？在大指数幂的时候用十进制来乘呢？算术运算次数小应该能弥补逻辑运算量太大的不足？</p>
+<p>当然在实操中还会用到<strong>取模</strong>这个操作。我们可以根本不去考虑乘方运算取模法则：</p>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">int</span> mi(<span class="built_in">int</span> a,<span class="built_in">int</span> b)</div><div class="line">&#123;</div><div class="line">    <span class="built_in">int</span> ans=<span class="number">1</span><span class="comment">;</span></div><div class="line">    a%=<span class="built_in">mod</span><span class="comment">;</span></div><div class="line">    <span class="keyword">while</span> (b)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (b&amp;<span class="number">1</span>) ans=ans*a%<span class="built_in">mod</span><span class="comment">;</span></div><div class="line">        b&gt;&gt;=<span class="number">1</span><span class="comment">;</span></div><div class="line">        a=a*a%<span class="built_in">mod</span><span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> ans<span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这算是简单的快速幂变形了。然鹅还有一个大boss：</p>
+<h2 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h2><p>矩阵运算的朴素算法如下：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const int N=100;</div><div class="line">int c[<span class="string">N</span>][<span class="symbol">N</span>];</div><div class="line">void multi(int a[<span class="string"></span>][<span class="symbol">N</span>],int b[][N],int n)</div><div class="line">&#123;</div><div class="line"><span class="code">    memset(c,0,sizeof c);</span></div><div class="line"><span class="code">    for(int i=1;i&lt;=n;i++)</span></div><div class="line"><span class="code">        for(int j=1;j&lt;=n;j++)</span></div><div class="line"><span class="code">        for(int k=1;k&lt;=n;k++)</span></div><div class="line"><span class="code">        c[i][j]+=a[i][k]*b[k][j];</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>显然矩阵乘法的复杂度是O(n^3)。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> tmp[N][N];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">multi</span><span class="params">(<span class="keyword">int</span> a[][N],<span class="keyword">int</span> b[][N],<span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(tmp,<span class="number">0</span>,<span class="keyword">sizeof</span> tmp);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)</div><div class="line">        tmp[i][j]+=a[i][k]*b[k][j];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</div><div class="line">        a[i][j]=tmp[i][j];</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> res[N][N];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">Pow</span><span class="params">(<span class="keyword">int</span> a[][N],<span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="built_in">memset</span>(res,<span class="number">0</span>,<span class="keyword">sizeof</span> res);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) res[i][i]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span>(n)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(n&amp;<span class="number">1</span>)</div><div class="line">            multi(res,a,n);<span class="comment">//res=res*a;复制直接在multi里面实现了；</span></div><div class="line">        multi(a,a,n);<span class="comment">//a=a*a</span></div><div class="line">        n&gt;&gt;=<span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>res数组初始化就等同于单位矩阵E,最终算出的结果是一个res矩阵。<br>至于应用。。今天就摸了。。改天补</p>
+
       
     </div>
     
@@ -384,8 +394,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/19/undefined-title/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2017/12/05/undefined-title/" rel="next" title="输入输出小结">
+                <i class="fa fa-chevron-left"></i> 输入输出小结
               </a>
             
           </div>
@@ -393,10 +403,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/03/undefined-title/" rel="prev" title="neuq 1093">
-                neuq 1093 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -524,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#emmm没了-markdown语法再见"><span class="nav-number">1.</span> <span class="nav-text">emmm没了 markdown语法再见</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摸一发快速幂"><span class="nav-number">1.</span> <span class="nav-text">摸一发快速幂</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵快速幂"><span class="nav-number">2.</span> <span class="nav-text">矩阵快速幂</span></a></li></ol></div>
             
 
           </div>
