@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="码一波求1-n之间素数的办法。。。。 硬刚解法–n,n/212345678910int main()&amp;#123;  int i,n;  while(~scanf(&quot;%d&quot;,&amp;amp;n))  &amp;#123;   for(i=2;i&amp;lt;n;i++)         if(n%i==0)    break;       if(i==n)    printf(&quot;YES\n&quot;);      else">
+<meta property="og:type" content="article">
+<meta property="og:title" content="求素数">
+<meta property="og:url" content="https://ggzero.github.io/2017/12/09/undefined-title/index.html">
+<meta property="og:site_name" content="rigid">
+<meta property="og:description" content="码一波求1-n之间素数的办法。。。。 硬刚解法–n,n/212345678910int main()&amp;#123;  int i,n;  while(~scanf(&quot;%d&quot;,&amp;amp;n))  &amp;#123;   for(i=2;i&amp;lt;n;i++)         if(n%i==0)    break;       if(i==n)    printf(&quot;YES\n&quot;);      else">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-10T10:13:57.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="求素数">
+<meta name="twitter:description" content="码一波求1-n之间素数的办法。。。。 硬刚解法–n,n/212345678910int main()&amp;#123;  int i,n;  while(~scanf(&quot;%d&quot;,&amp;amp;n))  &amp;#123;   for(i=2;i&amp;lt;n;i++)         if(n%i==0)    break;       if(i==n)    printf(&quot;YES\n&quot;);      else">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ggzero.github.io/2017/12/09/undefined-title/"/>
+
+
+
+
+
+  <title>求素数 | rigid</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">rigid</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">coding for fun!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-search">
+          <a href="/search" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ggzero.github.io/2017/12/09/undefined-title/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero.G">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="rigid">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">求素数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-09T17:01:23+08:00">
+                2017-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>码一波求1-n之间素数的办法。。。。</p>
+<h2 id="硬刚解法–n-n-2"><a href="#硬刚解法–n-n-2" class="headerlink" title="硬刚解法–n,n/2"></a>硬刚解法–n,n/2</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">int</span> i,n;</div><div class="line">  <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))</div><div class="line">  &#123;   <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;n;i++)</div><div class="line">         <span class="keyword">if</span>(n%i==<span class="number">0</span>)    <span class="keyword">break</span>; </div><div class="line">      <span class="keyword">if</span>(i==n)    <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</div><div class="line">      <span class="keyword">else</span>           <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是理所当然的想法，按照素数的定义，除了1和它本身没有其他的因数，就是素数。<br>这种解法的缺点就是循环规模n稍微大点，运行时间。。。<br>只需要简单思索就能考虑到，n的因数是成对出现的，如(2,n/2),(3,n/3)等等，因此只枚举i最大到sqr(n)即可退出循环。这里需要注意浮点误差，一般我们用：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="built_in">i</span>=<span class="number">2</span>;<span class="built_in">i</span>&lt;=(<span class="built_in">sqrt</span>(n)+<span class="number">0.5</span>);<span class="built_in">i</span>++)</div></pre></td></tr></table></figure>
+<p>硬刚解法估计只能在入门题中使用。。。也就是对于某些数据量小且n小的题目。。还是有奇效的//我就是在说你校的比赛题<br>emmm…但不是所有题都对菜鸡这么友好的。。我们还可以在时间上改进算法。</p>
+<h2 id="普通筛选法–埃拉托色尼筛法"><a href="#普通筛选法–埃拉托色尼筛法" class="headerlink" title="普通筛选法–埃拉托色尼筛法"></a>普通筛选法–埃拉托色尼筛法</h2><p>基本思想：素数的倍数一定不是素数<br>实现方法：用一个长度为N+1的bool数组保存信息（0表示素数，1表示非素数），先假设所有的数都是素数（初始化为0），从第一个素数2开始，把2的倍数都标记为非素数（置为1），一直到大于N；然后进行下一趟，找到2后面的下一个素数3，进行同样的处理，直到最后，数组中依然为0的数即为素数。<br>说明：整数1特殊处理即可。</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">bool judge[n+<span class="number">1</span>]=&#123;<span class="number">0</span>&#125;;</div><div class="line">int tot = <span class="number">0</span>;</div><div class="line"><span class="keyword">for</span> (int <span class="built_in">i</span> = <span class="number">2</span>; <span class="built_in">i</span> &lt;= n; ++<span class="built_in">i</span>)</div><div class="line">&#123;</div><div class="line">  if (!judge[i])</div><div class="line">  &#123;</div><div class="line">    prime[tot++] = i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (int <span class="built_in">j</span> = <span class="built_in">i</span>+<span class="built_in">i</span>; <span class="built_in">j</span> &lt;= n; <span class="built_in">j</span> += <span class="built_in">i</span>)</div><div class="line">  &#123;</div><div class="line">    judge[j] = <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当然打表打一次就够了。。。判断n以内一个数是不是指数直接judge[]就可以了。<br>但是我们大概算一下就会发现时间复杂度也不少。。。比如1e8,就是1e8*(1/2+1/3+1/5+1/7+1/11+…..)循环次数，前三个数加起来就以及1e8了，还不算判断时间。。。emmm 当然慢也很好解释，比如说一个合数30030，它分别在(2,3,5,7,9,11,13)时筛了一共是七次。。。emmm….更大的就更不用说了。。。</p>
+<p>能不能再给力点呢？</p>
+<h2 id="线性筛法–欧拉筛法"><a href="#线性筛法–欧拉筛法" class="headerlink" title="线性筛法–欧拉筛法"></a>线性筛法–欧拉筛法</h2><p>原理：每个合数只会被它的最小质因数筛去，因此每个数只会被标记一次，所以时间复杂度近似是O(n)</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100005</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXL 1299710</span></div><div class="line"><span class="keyword">int</span> prime[MAXN];</div><div class="line"><span class="keyword">int</span> check[MAXL];</div><div class="line"></div><div class="line"><span class="keyword">int</span> tot = <span class="number">0</span>;</div><div class="line"><span class="built_in">memset</span>(check, <span class="number">0</span>, <span class="keyword">sizeof</span>(check));</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; MAXL; ++i)</div><div class="line">&#123;</div><div class="line">  <span class="keyword">if</span> (!check[i])</div><div class="line">  &#123;</div><div class="line">    prime[tot++] = i;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot; ++j)</div><div class="line">  &#123;</div><div class="line">    <span class="keyword">if</span> (i * prime[j] &gt; MAXL)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    check[i*prime[j]] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="引申–求欧拉函数"><a href="#引申–求欧拉函数" class="headerlink" title="引申–求欧拉函数"></a>引申–求欧拉函数</h2><p>在数论，对正整数n，欧拉函数是小于或等于n的数中与n互质的数的数目。此函数以其首名研究者欧拉命名，它又称为Euler’s totient function、φ函数、欧拉商数等。</p>
+<p>//来自约三百年前的碾压</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#define MAXN 100005</span></div><div class="line"><span class="comment">#define MAXL 1299710</span></div><div class="line">int prime[MAXN]<span class="comment">;</span></div><div class="line">int check[MAXL]<span class="comment">;</span></div><div class="line">int phi[MAXL]<span class="comment">;</span></div><div class="line">int tot = <span class="number">0</span><span class="comment">;</span></div><div class="line">phi[<span class="number">1</span>] = <span class="number">1</span><span class="comment">;</span></div><div class="line">memset(check, <span class="number">0</span>, sizeof(check))<span class="comment">;</span></div><div class="line">for (int i = <span class="number">2</span><span class="comment">; i &lt; MAXL; ++i)</span></div><div class="line">&#123;</div><div class="line">  if (!check[i])</div><div class="line">  &#123;</div><div class="line">    prime[tot++] = i<span class="comment">;</span></div><div class="line">    phi[i] = i - <span class="number">1</span><span class="comment">;</span></div><div class="line">  &#125;</div><div class="line">  for (int <span class="keyword">j </span>= <span class="number">0</span><span class="comment">; j &lt; tot; ++j)</span></div><div class="line">  &#123;</div><div class="line">    if (i * prime[<span class="keyword">j] </span>&gt; MAXL)</div><div class="line">    &#123;</div><div class="line">      <span class="keyword">break;</span></div><div class="line"><span class="keyword"> </span>   &#125;</div><div class="line">    check[i*prime[<span class="keyword">j]] </span>= <span class="number">1</span><span class="comment">;</span></div><div class="line">    if (i % prime[<span class="keyword">j] </span>== <span class="number">0</span>)</div><div class="line">    &#123;</div><div class="line">      phi[i*prime[<span class="keyword">j]] </span>= phi[i] * prime[<span class="keyword">j];</span></div><div class="line"><span class="keyword"> </span>     <span class="keyword">break;</span></div><div class="line"><span class="keyword"> </span>   &#125;else</div><div class="line">    &#123;</div><div class="line">      phi[i*prime[<span class="keyword">j]] </span>= phi[i] * (prime[<span class="keyword">j]-1);</span></div><div class="line"><span class="keyword"> </span>   &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>参考：</p>
+<blockquote>
+<p><a href="https://www.cnblogs.com/grubbyskyer/p/3852421.html" target="_blank" rel="external">https://www.cnblogs.com/grubbyskyer/p/3852421.html</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/07/undefined-title/" rel="next" title="natural number">
+                <i class="fa fa-chevron-left"></i> natural number
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="zero.G" />
+            
+              <p class="site-author-name" itemprop="name">zero.G</p>
+              <p class="site-description motion-element" itemprop="description">败者无荣耀</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/yourname" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬刚解法–n-n-2"><span class="nav-number">1.</span> <span class="nav-text">硬刚解法–n,n/2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#普通筛选法–埃拉托色尼筛法"><span class="nav-number">2.</span> <span class="nav-text">普通筛选法–埃拉托色尼筛法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性筛法–欧拉筛法"><span class="nav-number">3.</span> <span class="nav-text">线性筛法–欧拉筛法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引申–求欧拉函数"><span class="nav-number">4.</span> <span class="nav-text">引申–求欧拉函数</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zero.G</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
