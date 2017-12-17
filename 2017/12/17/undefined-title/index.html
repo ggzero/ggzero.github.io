@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="rigid">
 <meta property="og:description" content="今天看到一道题：据说是简单的排序题一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现所以还是需要总结一波排序算法的。 常见排序算法分类我们通常所说的排序算法往往指的是内部排序算法，即数据记录在内存中进行排序。 常见排序算法一般分为以下几种：（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T09:20:30.130Z">
+<meta property="og:updated_time" content="2017-12-17T09:25:02.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
 <meta name="twitter:description" content="今天看到一道题：据说是简单的排序题一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现所以还是需要总结一波排序算法的。 常见排序算法分类我们通常所说的排序算法往往指的是内部排序算法，即数据记录在内存中进行排序。 常见排序算法一般分为以下几种：（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、">
@@ -364,8 +364,7 @@
 <p>常见排序算法一般分为以下几种：<br>（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、归并排序（二路归并排序和多路归并排序）；<br>（2）线性时间非比较类排序：计数排序、基数排序和桶排序。</p>
 <p>总结：<br>（1）在比较类排序中，归并排序号称最快，其次是快速排序和堆排序，两者不相伯仲，但是有一点需要注意，数据初始排序状态对堆排序不会产生太大的影响，而快速排序却恰恰相反。<br>（2）线性时间非比较类排序一般要优于非线性时间比较类排序，但前者对待排序元素的要求较为严格，比如计数排序要求待排序数的最大值不能太大，桶排序要求元素按照hash分桶后桶内元素的数量要均匀。线性时间非比较类排序的典型特点是以空间换时间。</p>
 <p>　有一点我们很容易忽略的是排序算法的稳定性(腾讯校招2016笔试题曾考过)。<br>　　排序算法稳定性的简单形式化定义为：如果Ai = Aj，排序前Ai在Aj之前，排序后Ai还在Aj之前，则称这种排序算法是稳定的。通俗地讲就是保证排序前后两个相等的数的相对顺序不变。<br>　　对于不稳定的排序算法，只要举出一个实例，即可说明它的不稳定性；而对于稳定的排序算法，必须对算法进行分析从而得到稳定的特性。需要注意的是，排序算法是否为稳定的是由具体算法决定的，不稳定的算法在某种条件下可以变为稳定的算法，而稳定的算法在某种条件下也可以变为不稳定的算法。<br>　　例如，对于冒泡排序，原本是稳定的排序算法，如果将记录交换的条件改成A[i] &gt;= A[i + 1]，则两个相等的记录就会交换位置，从而变成不稳定的排序算法。<br>　　其次，说一下排序算法稳定性的好处。排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，前一个键排序的结果可以为后一个键排序所用。基数排序就是这样，先按低位排序，逐次按高位排序，低位排序后元素的顺序在高位也相同时是不会改变的。</p>
-<p>#算法描述与实现#</p>
-<hr>
+<h1 id="算法描述与实现"><a href="#算法描述与实现" class="headerlink" title="算法描述与实现"></a>算法描述与实现</h1><hr>
 <h2 id="一，交换类排序"><a href="#一，交换类排序" class="headerlink" title="一，交换类排序"></a>一，交换类排序</h2><p>交换排序的基本方法是：两两比较待排序记录的排序码，交换不满足顺序要求的偶对，直到全部满足位置。常见的冒泡排序和快速排序就属于交换类排序。</p>
 <p><strong>1，冒泡排序</strong><br>　冒泡排序是一种极其简单的排序算法，它重复地走访过要排序的元素，依次比较相邻两个元素，如果他们的顺序错误就把他们调换过来，直到没有元素再需要交换，排序完成。这个算法的名字由来是因为越小(或越大)的元素会经由交换慢慢“浮”到数列的顶端。<br>　　冒泡排序算法的运作如下：</p>
 <ul>
@@ -567,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见排序算法分类"><span class="nav-number">1.</span> <span class="nav-text">常见排序算法分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一，交换类排序"><span class="nav-number">2.</span> <span class="nav-text">一，交换类排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，插入类排序"><span class="nav-number">3.</span> <span class="nav-text">二，插入类排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见排序算法分类"><span class="nav-number">1.</span> <span class="nav-text">常见排序算法分类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#算法描述与实现"><span class="nav-number"></span> <span class="nav-text">算法描述与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一，交换类排序"><span class="nav-number">1.</span> <span class="nav-text">一，交换类排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二，插入类排序"><span class="nav-number">2.</span> <span class="nav-text">二，插入类排序</span></a></li></ol></div>
             
 
           </div>
