@@ -79,17 +79,14 @@
 
 
 
-<meta name="description" content="码一波求1-n之间素数的办法。。。。 硬刚解法–n,n/212345678910int main()&amp;#123;  int i,n;  while(~scanf(&quot;%d&quot;,&amp;amp;n))  &amp;#123;   for(i=2;i&amp;lt;n;i++)         if(n%i==0)    break;       if(i==n)    printf(&quot;YES\n&quot;);      else">
 <meta property="og:type" content="article">
 <meta property="og:title" content="求素数">
 <meta property="og:url" content="https://ggzero.github.io/2017/12/08/undefined-title/index.html">
 <meta property="og:site_name" content="rigid">
-<meta property="og:description" content="码一波求1-n之间素数的办法。。。。 硬刚解法–n,n/212345678910int main()&amp;#123;  int i,n;  while(~scanf(&quot;%d&quot;,&amp;amp;n))  &amp;#123;   for(i=2;i&amp;lt;n;i++)         if(n%i==0)    break;       if(i==n)    printf(&quot;YES\n&quot;);      else">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T13:37:20.836Z">
+<meta property="og:updated_time" content="2018-05-10T09:44:00.216Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="求素数">
-<meta name="twitter:description" content="码一波求1-n之间素数的办法。。。。 硬刚解法–n,n/212345678910int main()&amp;#123;  int i,n;  while(~scanf(&quot;%d&quot;,&amp;amp;n))  &amp;#123;   for(i=2;i&amp;lt;n;i++)         if(n%i==0)    break;       if(i==n)    printf(&quot;YES\n&quot;);      else">
 
 
 
@@ -359,7 +356,9 @@
       
 
       
-        <p>码一波求1-n之间素数的办法。。。。</p>
+        <hr>
+<a id="more"></a>
+<p>码一波求1-n之间素数的办法。。。。</p>
 <h2 id="硬刚解法–n-n-2"><a href="#硬刚解法–n-n-2" class="headerlink" title="硬刚解法–n,n/2"></a>硬刚解法–n,n/2</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">int</span> i,n;</div><div class="line">  <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))</div><div class="line">  &#123;   <span class="keyword">for</span>(i=<span class="number">2</span>;i&lt;n;i++)</div><div class="line">         <span class="keyword">if</span>(n%i==<span class="number">0</span>)    <span class="keyword">break</span>; </div><div class="line">      <span class="keyword">if</span>(i==n)    <span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</div><div class="line">      <span class="keyword">else</span>           <span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这是理所当然的想法，按照素数的定义，除了1和它本身没有其他的因数，就是素数。<br>这种解法的缺点就是循环规模n稍微大点，运行时间。。。<br>只需要简单思索就能考虑到，n的因数是成对出现的，如(2,n/2),(3,n/3)等等，因此只枚举i最大到sqr(n)即可退出循环。这里需要注意浮点误差，一般我们用：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="built_in">i</span>=<span class="number">2</span>;<span class="built_in">i</span>&lt;=(<span class="built_in">sqrt</span>(n)+<span class="number">0.5</span>);<span class="built_in">i</span>++)</div></pre></td></tr></table></figure>

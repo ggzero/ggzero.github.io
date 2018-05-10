@@ -79,17 +79,14 @@
 
 
 
-<meta name="description" content="摸一发快速幂标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了： 12345678910int qpow(int a,int b)&amp;#123;    int ans=1;        while(b)&amp;#123;        if(b&amp;amp;1)        　　ans*=a;        a*=a;        b&amp;gt;&amp;gt;=1;　 &amp;#125;    retu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="快速幂">
 <meta property="og:url" content="https://ggzero.github.io/2017/12/06/undefined-title/index.html">
 <meta property="og:site_name" content="rigid">
-<meta property="og:description" content="摸一发快速幂标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了： 12345678910int qpow(int a,int b)&amp;#123;    int ans=1;        while(b)&amp;#123;        if(b&amp;amp;1)        　　ans*=a;        a*=a;        b&amp;gt;&amp;gt;=1;　 &amp;#125;    retu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T13:34:00.465Z">
+<meta property="og:updated_time" content="2018-05-10T09:44:02.244Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速幂">
-<meta name="twitter:description" content="摸一发快速幂标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了： 12345678910int qpow(int a,int b)&amp;#123;    int ans=1;        while(b)&amp;#123;        if(b&amp;amp;1)        　　ans*=a;        a*=a;        b&amp;gt;&amp;gt;=1;　 &amp;#125;    retu">
 
 
 
@@ -359,7 +356,9 @@
       
 
       
-        <h2 id="摸一发快速幂"><a href="#摸一发快速幂" class="headerlink" title="摸一发快速幂"></a>摸一发快速幂</h2><p>标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了：</p>
+        <hr>
+<a id="more"></a>
+<h2 id="摸一发快速幂"><a href="#摸一发快速幂" class="headerlink" title="摸一发快速幂"></a>摸一发快速幂</h2><p>标准快速幂的原理就是把指数拆成二进制减少乘法次数。直接放代码实现了：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">qpow</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> ans=<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(b)&#123;</div><div class="line">        <span class="keyword">if</span>(b&amp;<span class="number">1</span>)</div><div class="line">        　　ans*=a;</div><div class="line">        a*=a;</div><div class="line">        b&gt;&gt;=<span class="number">1</span>;</div><div class="line">　 &#125;</div><div class="line">    <span class="keyword">return</span> ans;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>显然运算量减少了许多。在大指数幂的时候尤为突出。//其实这样能不能做一个推广？在大指数幂的时候用十进制来乘呢？算术运算次数小应该能弥补逻辑运算量太大的不足？</p>
 <p>当然在实操中还会用到<strong>取模</strong>这个操作。我们可以根本不去考虑乘方运算取模法则：</p>

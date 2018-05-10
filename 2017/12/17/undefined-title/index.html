@@ -79,17 +79,14 @@
 
 
 
-<meta name="description" content="今天看到一道题：据说是简单的排序题一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现所以还是需要总结一波排序算法的。 常见排序算法分类我们通常所说的排序算法往往指的是内部排序算法，即数据记录在内存中进行排序。 常见排序算法一般分为以下几种：（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法">
 <meta property="og:url" content="https://ggzero.github.io/2017/12/17/undefined-title/index.html">
 <meta property="og:site_name" content="rigid">
-<meta property="og:description" content="今天看到一道题：据说是简单的排序题一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现所以还是需要总结一波排序算法的。 常见排序算法分类我们通常所说的排序算法往往指的是内部排序算法，即数据记录在内存中进行排序。 常见排序算法一般分为以下几种：（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T14:07:07.789Z">
+<meta property="og:updated_time" content="2018-05-10T09:43:55.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
-<meta name="twitter:description" content="今天看到一道题：据说是简单的排序题一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现所以还是需要总结一波排序算法的。 常见排序算法分类我们通常所说的排序算法往往指的是内部排序算法，即数据记录在内存中进行排序。 常见排序算法一般分为以下几种：（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、">
 
 
 
@@ -359,7 +356,9 @@
       
 
       
-        <p>今天看到一道题：<br><a href="http://newoj.acmclub.cn/problems/1123" target="_blank" rel="external">据说是简单的排序题</a><br>一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现<br>所以还是需要总结一波排序算法的。</p>
+        <hr>
+<a id="more"></a>
+<p>今天看到一道题：<br><a href="http://newoj.acmclub.cn/problems/1123" target="_blank" rel="external">据说是简单的排序题</a><br>一点简单的思路就是二分查找。。但是1e4*1e4。。emmmm不会代码实现<br>所以还是需要总结一波排序算法的。</p>
 <h2 id="常见排序算法分类"><a href="#常见排序算法分类" class="headerlink" title="常见排序算法分类"></a><strong>常见排序算法分类</strong></h2><p>我们通常所说的排序算法往往指的是内部排序算法，即数据记录在内存中进行排序。</p>
 <p>常见排序算法一般分为以下几种：<br>（1）非线性时间比较类排序：交换类排序（快速排序和冒泡排序）、插入类排序（简单插入排序和希尔排序）、选择类排序（简单选择排序和堆排序）、归并排序（二路归并排序和多路归并排序）；<br>（2）线性时间非比较类排序：计数排序、基数排序和桶排序。</p>
 <p>总结：<br>（1）在比较类排序中，归并排序号称最快，其次是快速排序和堆排序，两者不相伯仲，但是有一点需要注意，数据初始排序状态对堆排序不会产生太大的影响，而快速排序却恰恰相反。<br>（2）线性时间非比较类排序一般要优于非线性时间比较类排序，但前者对待排序元素的要求较为严格，比如计数排序要求待排序数的最大值不能太大，桶排序要求元素按照hash分桶后桶内元素的数量要均匀。线性时间非比较类排序的典型特点是以空间换时间。</p>
